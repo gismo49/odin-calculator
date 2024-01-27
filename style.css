@@ -1,7 +1,16 @@
 body {
     display: flex;
     justify-content: center;
-    background-color: lightcyan;
+    background-color: white
+    font-family: Arial, Helvetica, sans-serif;
+    cursor: pointer;
+}
+
+.container {
+    border: solid black 5px;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: lightgray;
 }
 
 .display {
@@ -16,6 +25,8 @@ body {
     font-weight: 700;
     border-radius: 15px;
     margin-top: 50px;
+    margin-bottom: 25px;
+    background-color: #eaeaea;
     
 }
 
@@ -32,24 +43,49 @@ body {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid black 2px;
+    border: solid black 1px;
     height: 100px;
     width: 100px;
     font-weight: 700;
     font-size: 32px;
-    background-color: bisque;
-    border-radius: 15px;
+    background-color: #f0f0f0;
+    border-radius: 90px;
+}
+
+.number:hover {
+    background-color: #dcdcdc;;
 }
 
 .operator {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid black 2px;
+    border: solid black 1px;
     height: 100px;
     width: 100px;
     font-weight: 700;
     font-size: 32px;
-    background-color: coral;
+    background-color: #ff9500;
+    color: white;
     border-radius: 15px;
+}
+
+.operator:hover {
+    background-color: #ff7f00;;
+}
+
+.reset {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: solid black 1px;
+    width: 215px;
+    height: 100px;
+    justify-self: center;
+    font-size: 32px;
+    font-weight: 700;
+    border-radius: 15px;
+    background-color: lightpink;
+    margin-top: 25px;
+    
 }
