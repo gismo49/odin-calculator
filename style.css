@@ -1,91 +1,105 @@
 body {
     display: flex;
     justify-content: center;
-    background-color: white
     font-family: Arial, Helvetica, sans-serif;
-    cursor: pointer;
-}
+    font-size: 32px;
+    font-weight: 700;
 
-.container {
-    border: solid black 5px;
-    padding: 20px;
-    border-radius: 10px;
-    background-color: lightgray;
 }
 
 .display {
     display: flex;
-    justify-content: center;
-    align-items: center;
     border: solid black 2px;
-    width: 430px;
-    height: 100px;
-    justify-self: center;
-    font-size: 32px;
-    font-weight: 700;
-    border-radius: 15px;
-    margin-top: 50px;
-    margin-bottom: 25px;
+    padding: 20px;
+    border-radius: 10px;
+    justify-content: flex-end;
     background-color: #eaeaea;
-    
+
 }
 
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    column-gap: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    border: solid black 2px;
+    border-radius: 10px;
+    padding: 20px;
+    background-color: lightslategray
+
+}
 
 .row {
     display: flex;
     justify-content: center;
-    gap: 5px;
-    margin-top: 5px;
-    margin-bottom: 5px;
+    gap: 10px;
 }
 
 .number {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid black 1px;
-    height: 100px;
+    padding: 20px;
     width: 100px;
-    font-weight: 700;
+    height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 32px;
-    background-color: #f0f0f0;
+    font-weight: 700;
     border-radius: 90px;
 }
-
 .number:hover {
-    background-color: #dcdcdc;;
+    background-color: #dcdcdc;
+}
+
+.equals {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    width: 100px;
+    height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 32px;
+    font-weight: 700;
+    border-radius: 90px;
 }
 
 .operator {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid black 1px;
-    height: 100px;
+    padding: 20px;
     width: 100px;
-    font-weight: 700;
+    height: 100px;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 32px;
+    font-weight: 700;
     background-color: #ff9500;
     color: white;
-    border-radius: 15px;
+    border-radius: 90px;
+}
+.operator:hover {
+    background-color: #ff7f00;
 }
 
-.operator:hover {
-    background-color: #ff7f00;;
-}
 
 .reset {
     display: flex;
     justify-content: center;
     align-items: center;
-    border: solid black 1px;
-    width: 215px;
-    height: 100px;
-    justify-self: center;
+    padding: 20px;
+    font-family: Arial, Helvetica, sans-serif;
     font-size: 32px;
     font-weight: 700;
-    border-radius: 15px;
-    background-color: lightpink;
-    margin-top: 25px;
-    
+    background-color: #ff3b30;
+    border-radius: 10px;
+
+
+}
+
+.reset:hover {
+    background-color: #ff2020;
 }

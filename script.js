@@ -1,69 +1,89 @@
-const add = function(a,b) {
-    let num1 = parseFloat(a);
-    let num2 = parseFloat(b);
-    let sum = num1+num2;
-    return sum;
-}
+//Create Variables From HTML
 
+const numbers = document.querySelectorAll('.number');
+const operators = document.querySelectorAll('.operator');
+const display = document.querySelector('.display');
+const clear = document.querySelector('.reset');
+const equals = document.querySelector(".equals");
 
-const substract = function(a,b) {
-    let num1 = parseFloat(a);
-    let num2 = parseFloat(b);
-    let sub = num1-num2;
-    return sub;
-}
+//Create Global Variables 
+let num1 = "";
+let num2 = "";
+let operator = "";
+let displayValue = ""; 
 
-const multiply = function(a, b) {
-    let num1 = parseFloat(a);
-    let num2 = parseFloat(b);
-    let product = num1*num2; 
-    return product;
-}
+//Add Event Listeners For Every Number
+numbers.forEach(number => {
+    number.addEventListener("click", (e) => {
+       displayValue += e.target.getAttribute("data-value");
+       updateDisplay();
+    })
+})
+//Add Event Listeners For Every Operator
 
-
-const divide = function(a, b) {
-    let num1 = parseFloat(a);
-    let num2 = parseFloat(b);
-    let div = num1/num2;
-    return div;
-}
-
-let currentInput = '';
-let firstNumber = '';
-let operator = '';
-let secondNumber = '';
-
-document.addEventListener('DOMContentLoaded', () => {
-    const numbers = document.querySelectorAll('.number');
-    const operators = document.querySelectorAll('.operator');
-    const display = document.querySelector('.display');
-    const clearButton = document.querySelector('.reset');
-
-    numbers.forEach(number => {
-        number.addEventListener('click', () => {
-            handleNumber(number.getAttribute('value'));
-        });
+operators.forEach(opElement => {
+    opElement.addEventListener('click', (e) => {
+        if (!operator) {
+            num1 = displayValue; // Store current display value as num1
+            operator = e.target.getAttribute("data-value"); // Set the operator
+            displayValue = ""; // Clear display value for the next input
+        } else {
+            num2 = displayValue; // Store current display value as num2
+            const result = operate(operator, num1, num2); // Perform operation
+            display.textContent = formatResult(result); // Update the display with formatted result
+            displayValue = ""; // Clear display value for the next input
+            num1 = result.toString(); // Set result as num1 for next operation
+            operator = e.target.getAttribute("data-value"); // Update operator for next operation
+        }
     });
-    
-    operators.forEach(operator => {
-        operator.addEventListener('click', () => {
-            handleOperator(operator.getAttribute('value'));
-        });
-    });
-    
-    clearButton.addEventListener('click', clearDisplay);
+});
+
+equals.addEventListener('click', () => {
+    if (num1 && operator && displayValue) {
+        num2 = displayValue; 
+        const result = operate(operator, num1, num2);
+        display.textContent = formatResult(result);
+        num1 = result.toString(); // Store the result for the next operation
+        operator = ""; // Reset the operator for the next operation
+        displayValue = ""; // Reset displayValue to start fresh for next input
+    }
+});
+
+
+//Add Event Listener For Clear Button
+clear.addEventListener('click', () => {
+        num1 = "";
+        num2 = "";
+        operator = "";
+        displayValue = "";
+        display.textContent = "0";
 })
 
-function operate(operator, firstNumber, secondNumber) {
-    if (operator === "+") {
-        add(firstNumber, secondNumber)
-    } else if (operator === "-") {
-        substract(firstNumber, secondNumber)
-    } else if (operator === "*") {
-        multiply(firstNumber, secondNumber)
-    } else if (operator === "/") {
-        divide(firstNumber, secondNumber)
-    }
+//Create Logic for Appropriate Function Call 
+function operate(operator, num1, num2) {
+    let first = parseFloat(num1);
+    let second = parseFloat(num2);
+    switch(operator) {
+        case "+": return first + second
+        case "-": return first - second
+        case "*": return first * second
+        case "/":
+            if (second === 0) {
+                return "Syntax Error: Can't Divide by Zero"
+            } 
+            return first / second;
+        default: return 0; 
+            
+    } 
 }
 
+function formatResult(result) {
+    return Number.isFinite(result) ? parseFloat(result.toFixed(7)) : "Error"
+}
+
+//Create Functions to Update the Display 
+
+function updateDisplay() {
+    display.textContent = displayValue; 
+}
 
